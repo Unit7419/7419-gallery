@@ -14,7 +14,7 @@ module.exports = {
   devServer: {
     contentBase: path.resolve(__dirname, 'examples/src'),
     disableHostCheck: true,
-    port: 8000,
+    port: 7419,
     host: "0.0.0.0"
   },
   module: {
