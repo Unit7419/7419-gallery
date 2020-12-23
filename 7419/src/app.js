@@ -7,7 +7,8 @@ import CustomComponentSelection from './CustomComponentSelection'
 import Sortable from './Sortable'
 import DynamicLoading from './DynamicLoading'
 import DynamicColumns from './DynamicColumns'
-import { request } from './utils'
+import { request, GET_PHOTOS_API, STATIC_DOMAIN } from './utils'
+import { Uploader } from './Upload'
 
 class App extends React.Component {
   constructor() {
@@ -15,14 +16,16 @@ class App extends React.Component {
     this.state = { width: -1 }
     this.loadPhotos = this.loadPhotos.bind(this)
   }
+
   componentDidMount() {
     this.loadPhotos()
   }
+
   loadPhotos() {
-    request('http://47.100.219.10:7001/api/gallery/photos').then(data => {
+    request(GET_PHOTOS_API).then(data => {
       let photos = data.map(imgPath => {
         const item = {
-          src: `http://47.100.219.10:15536/photos/${imgPath}`,
+          src: `${STATIC_DOMAIN}/photos/${imgPath}`,
           key: imgPath,
           id: imgPath,
           height_c: 533,
@@ -72,8 +75,9 @@ class App extends React.Component {
           <WithLightbox photos={this.state.photos.slice(60, 75)} /> */}
           {/* <CustomComponentSelection photos={this.state.photos.slice(75, 90)} /> */}
           {/* <Sortable photos={this.state.photos.slice(90, 100)} /> */}
+          <Uploader />
           <DynamicColumns
-            title={'Custom Dynamic Columns'}
+            title={''}
             photos={this.state.photos.slice(100, 120)}
           />
           <DynamicLoading photos={this.state.photos} />
