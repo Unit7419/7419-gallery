@@ -31,7 +31,7 @@ function DynamicLoading({ photos }) {
 
   return (
     <div>
-      <h2>Loading Photos Dynamically in Column Layout</h2>
+      {/* <h2>Loading Photos Dynamically in Column Layout</h2> */}
       <Gallery photos={images} direction={'column'} />
       {!loadedAll && (
         <div className="loading-msg" id="msg-loading-more">

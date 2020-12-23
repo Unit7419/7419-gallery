@@ -18,43 +18,49 @@ class App extends React.Component {
     this.loadPhotos();
   }
   loadPhotos() {
-    const urlParams = {
-      api_key: '455b5e2fa6b951f9b9ab58a86d5e1f8a',
-      photoset_id: '72157708141247864',
-      user_id: '146659101@N08',
-      format: 'json',
-      per_page: '120',
-      extras: 'url_m,url_c,url_l,url_h,url_o',
-    };
+    fetch('http://47.100.219.10:7001/api/gallery/photos')
+      .then(r => r.json())
+      .then(data => {
+        let photos = data.map(imgPath => {
+          const item = {
+            src: `http://47.100.219.10:15536/photos/${imgPath}`,
+            key: imgPath,
+            id: imgPath,
+            height_c: 533,
+            height_h: 1065,
+            height_l: 682,
+            height_m: 333,
+            height_o: 1065,
+            title: '7419',
+            width_c: 800,
+            width_h: 1600,
+            width_l: 1024,
+            width_m: 500,
+            width_o: 1600,
+          };
 
-    let url = 'https://api.flickr.com/services/rest/?method=flickr.photosets.getPhotos';
-    url = Object.keys(urlParams).reduce((acc, item) => {
-      return acc + '&' + item + '=' + urlParams[item];
-    }, url);
+          return {
+            src: item.src,
+            width: parseInt(item.width_o),
+            height: parseInt(item.height_o),
+            title: item.title,
+            alt: item.title,
+            key: item.id,
+            // srcSet: [
+            //   `${item.src} ${item.width_m}w`,
+            //   `${item.src} ${item.width_c}w`,
+            //   `${item.src} ${item.width_l}w`,
+            //   `${item.src} ${item.width_h}w`,
+            // ],
+            sizes: '(min-width: 480px) 50vw, (min-width: 1024px) 33.3vw, 100vw',
+          };
+        });
 
-    jsonp(url, { name: 'jsonFlickrApi' }, (err, data) => {
-      let photos = data.photoset.photo.map(item => {
-        let aspectRatio = parseFloat(item.width_o / item.height_o);
-        return {
-          src: item.url_l,
-          width: parseInt(item.width_o),
-          height: parseInt(item.height_o),
-          title: item.title,
-          alt: item.title,
-          key: item.id,
-          srcSet: [
-            `${item.url_m} ${item.width_m}w`,
-            `${item.url_c} ${item.width_c}w`,
-            `${item.url_l} ${item.width_l}w`,
-            `${item.url_h} ${item.width_h}w`,
-          ],
-          sizes: '(min-width: 480px) 50vw, (min-width: 1024px) 33.3vw, 100vw',
-        };
+        console.log(photos, 'this.state.photos');
+        this.setState({
+          photos: this.state.photos ? this.state.photos.concat(photos) : photos,
+        });
       });
-      this.setState({
-        photos: this.state.photos ? this.state.photos.concat(photos) : photos,
-      });
-    });
   }
 
   render() {
@@ -62,11 +68,11 @@ class App extends React.Component {
       const width = this.state.width;
       return (
         <div className="App">
-          <Basic title={'Basic Row Layout'} photos={this.state.photos.slice(0, 20)} />
+          {/* <Basic title={'Basic Row Layout'} photos={this.state.photos.slice(0, 20)} />
           <Basic title={'Basic Column Layout'} direction="column" photos={this.state.photos.slice(40, 60)} />
-          <WithLightbox photos={this.state.photos.slice(60, 75)} />
-          <CustomComponentSelection photos={this.state.photos.slice(75, 90)} />
-          <Sortable photos={this.state.photos.slice(90, 100)} />
+          <WithLightbox photos={this.state.photos.slice(60, 75)} /> */}
+          {/* <CustomComponentSelection photos={this.state.photos.slice(75, 90)} /> */}
+          {/* <Sortable photos={this.state.photos.slice(90, 100)} /> */}
           <DynamicColumns title={'Custom Dynamic Columns'} photos={this.state.photos.slice(100, 120)} />
           <DynamicLoading photos={this.state.photos} />
         </div>

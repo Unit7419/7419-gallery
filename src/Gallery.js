@@ -87,7 +87,9 @@ const Gallery = React.memo(function Gallery({
     }
     galleryStyle = { position: 'relative' };
     thumbs = computeColumnLayout({ containerWidth: width, columns, margin, photos });
-    galleryStyle.height = thumbs[thumbs.length - 1].containerHeight;
+    if (thumbs.length) {
+      galleryStyle.height = thumbs[thumbs.length - 1].containerHeight;
+    }
   }
 
   const renderComponent = renderImage || Photo;
