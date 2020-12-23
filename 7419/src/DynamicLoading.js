@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from "react";
-import Gallery from "react-photo-gallery";
-import { debounce } from "./utils";
+import React, { useState, useEffect } from 'react';
+import Gallery from 'react-photo-gallery';
+import { debounce } from './utils';
 
-function ExampleDynamicLoading({ photos }) {
+function DynamicLoading({ photos }) {
   const [images, setImages] = useState(photos.slice(0, 6));
   const [pageNum, setPageNum] = useState(1);
   const [loadedAll, setLoadedAll] = useState(false);
@@ -18,15 +18,12 @@ function ExampleDynamicLoading({ photos }) {
   }, 200);
 
   useEffect(() => {
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
   });
 
   const handleScroll = () => {
-    let scrollY =
-      window.scrollY ||
-      window.pageYOffset ||
-      document.documentElement.scrollTop;
+    let scrollY = window.scrollY || window.pageYOffset || document.documentElement.scrollTop;
     if (window.innerHeight + scrollY >= document.body.offsetHeight - 50) {
       loadMorePhotos();
     }
@@ -35,7 +32,7 @@ function ExampleDynamicLoading({ photos }) {
   return (
     <div>
       <h2>Loading Photos Dynamically in Column Layout</h2>
-      <Gallery photos={images} direction={"column"} />
+      <Gallery photos={images} direction={'column'} />
       {!loadedAll && (
         <div className="loading-msg" id="msg-loading-more">
           Loading
@@ -45,4 +42,4 @@ function ExampleDynamicLoading({ photos }) {
   );
 }
 
-export default ExampleDynamicLoading;
+export default DynamicLoading;

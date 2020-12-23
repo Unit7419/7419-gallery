@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import Gallery from 'react-photo-gallery';
 import Carousel, { Modal, ModalGateway } from 'react-images';
 
-function ExampleWithLightbox({ photos }) {
+function WithLightbox({ photos }) {
   const [currentImage, setCurrentImage] = useState(0);
   const [viewerIsOpen, setViewerIsOpen] = useState(false);
 
@@ -39,4 +39,4 @@ function ExampleWithLightbox({ photos }) {
   );
 }
 
-export default ExampleWithLightbox;
+export default WithLightbox;

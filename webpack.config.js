@@ -2,7 +2,7 @@ const webpack = require('webpack');
 const path = require('path');
 
 module.exports = {
-  context: path.resolve(__dirname, 'examples/src'),
+  context: path.resolve(__dirname, '7419/src'),
   mode: 'development',
   entry: {
     app: './app.js',
@@ -12,7 +12,7 @@ module.exports = {
     publicPath: '/',
   },
   devServer: {
-    contentBase: path.resolve(__dirname, 'examples/src'),
+    contentBase: path.resolve(__dirname, '7419/src'),
     disableHostCheck: true,
     port: 7419,
     host: "0.0.0.0"

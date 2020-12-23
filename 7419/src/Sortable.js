@@ -8,7 +8,7 @@ const SortableGallery = SortableContainer(({ items }) => (
   <Gallery photos={items} renderImage={props => <SortablePhoto {...props} />} />
 ));
 
-function ExampleSortable({ photos }) {
+function Sortable({ photos }) {
   const [items, setItems] = useState(photos);
 
   const onSortEnd = ({ oldIndex, newIndex }) => {
@@ -24,4 +24,4 @@ function ExampleSortable({ photos }) {
   );
 }
 
-export default ExampleSortable;
+export default Sortable;

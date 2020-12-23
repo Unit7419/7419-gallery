@@ -2,7 +2,7 @@ import React, { useState, useCallback } from 'react';
 import Gallery from 'react-photo-gallery';
 import SelectedImage from './SelectedImage';
 
-function ExampleCustomComponentSelection({ photos }) {
+function CustomComponentSelection({ photos }) {
   const [images, setImages] = useState(photos);
   const [selectAll, setSelectAll] = useState(false);
 
@@ -37,4 +37,4 @@ function ExampleCustomComponentSelection({ photos }) {
   );
 }
 
-export default ExampleCustomComponentSelection;
+export default CustomComponentSelection;
