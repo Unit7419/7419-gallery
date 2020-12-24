@@ -1,9 +1,11 @@
 const webpack = require('webpack');
 const path = require('path');
 
+const mode = process.env.NODE_ENV === 'development' ? 'development' : 'production'
+
 module.exports = {
   context: path.resolve(__dirname, '7419/src'),
-  mode: 'production',
+  mode,
   entry: {
     app: './app.js',
   },
