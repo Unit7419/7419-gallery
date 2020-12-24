@@ -1,6 +1,7 @@
 export * from './request'
 export * from './api'
 export * from './const'
+export * from './http'
 
 export const debounce = (func, wait, immediate) => {
   let timeout

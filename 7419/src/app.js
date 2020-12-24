@@ -7,7 +7,7 @@ import CustomComponentSelection from './CustomComponentSelection'
 import Sortable from './Sortable'
 import DynamicLoading from './DynamicLoading'
 import DynamicColumns from './DynamicColumns'
-import { request, GET_PHOTOS_API, STATIC_DOMAIN } from './utils'
+import { get, GET_PHOTOS_API, STATIC_DOMAIN } from './utils'
 import { Uploader } from './Upload'
 
 class App extends React.Component {
@@ -22,7 +22,7 @@ class App extends React.Component {
   }
 
   loadPhotos() {
-    request(GET_PHOTOS_API).then(data => {
+    get(GET_PHOTOS_API).then(data => {
       let photos = data.map(imgPath => {
         const item = {
           src: `${STATIC_DOMAIN}/photos/${imgPath}`,
