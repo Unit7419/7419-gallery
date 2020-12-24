@@ -1,0 +1,10 @@
+{
+  "apps": [
+    {
+      "name": "gallery",
+      "script": "yarn start",
+      "watch": "./",
+      "log_date_format": "YYYY-MM-DD HH:mm Z"
+    }
+  ]
+}
