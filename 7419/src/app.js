@@ -23,7 +23,7 @@ class App extends React.Component {
 
   loadPhotos() {
     get(GET_PHOTOS_API).then(data => {
-      let photos = data.map(imgPath => {
+      const photos = data.reduce((ps, imgPath) => {
         const item = {
           src: `${STATIC_DOMAIN}/photos/${imgPath}`,
           key: imgPath,
@@ -41,24 +41,26 @@ class App extends React.Component {
           width_o: 1600,
         }
 
-        return {
-          src: item.src,
-          width: parseInt(item.width_o),
-          height: parseInt(item.height_o),
-          title: item.title,
-          alt: item.title,
-          key: item.id,
-          // srcSet: [
-          //   `${item.src} ${item.width_m}w`,
-          //   `${item.src} ${item.width_c}w`,
-          //   `${item.src} ${item.width_l}w`,
-          //   `${item.src} ${item.width_h}w`,
-          // ],
-          sizes: '(min-width: 480px) 50vw, (min-width: 1024px) 33.3vw, 100vw',
-        }
-      })
+        return [
+          {
+            src: item.src,
+            width: parseInt(item.width_o),
+            height: parseInt(item.height_o),
+            title: item.title,
+            alt: item.title,
+            key: item.id,
+            // srcSet: [
+            //   `${item.src} ${item.width_m}w`,
+            //   `${item.src} ${item.width_c}w`,
+            //   `${item.src} ${item.width_l}w`,
+            //   `${item.src} ${item.width_h}w`,
+            // ],
+            sizes: '(min-width: 480px) 50vw, (min-width: 1024px) 33.3vw, 100vw',
+          },
+          ...ps,
+        ]
+      }, [])
 
-      console.log(photos, 'this.state.photos')
       this.setState({
         photos: this.state.photos ? this.state.photos.concat(photos) : photos,
       })
