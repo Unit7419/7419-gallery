@@ -3,7 +3,7 @@ const path = require('path');
 
 module.exports = {
   context: path.resolve(__dirname, '7419/src'),
-  mode: 'development',
+  mode: 'production',
   entry: {
     app: './app.js',
   },
