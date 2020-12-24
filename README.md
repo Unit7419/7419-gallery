@@ -1,5 +1,21 @@
 # Gallery of 7419
+
 > Store [7419-images](https://github.com/justwink/7419-images/)
 
 You may be wondering what the content of this project is, then you should not have a login account and password.
 
+# TODO
+
+- [x] 按照上传时间排序
+- [ ] 图片尺寸优化
+  - [ ] 改成背景 Cover
+  - [ ] 解析图片时候读取尺寸接口返回前端读取使用
+  - [ ] 瀑布流处理
+- [ ] 批量上传
+- [ ] 用户验证
+- [ ] 删除图片
+- [ ] 预览图片
+- [ ] 基本体检交互优化
+  - [ ] 弹窗
+  - [ ] Loading
+- [ ] UX 优化
