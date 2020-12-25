@@ -34,18 +34,26 @@ export const Uploader = () => {
 
       if (['done', 'error'].includes(info.file.status)) {
         if (file.size) {
-          getBase64(file, base64 => {
-            post(PUT_PHOTOS_API, {
-              base64,
-              name: `${Date.now()}-${file.name}`,
+          const form = new FormData()
+          form.append('file', file)
+          form.append('name', `${Date.now()}-${file.name}`)
+
+          post(PUT_PHOTOS_API, form, {form: true})
+            .then(() => {
+              message.success('Upload success!')
+              setTimeout(() => location.reload(), 300) // 临时
             })
-              .then(() => {
-                message.success('Upload success!')
-                setTimeout(() => location.reload(), 1000) // 临时
-              })
-              .catch(message.error)
-              .finally(() => setSpinning(false))
-          })
+            .catch(message.error)
+            .finally(() => setSpinning(false))
+
+          // {
+          //   base64,
+          //   name: `${Date.now()}-${file.name}`,
+          // }
+
+          // getBase64(file, base64 => {
+
+          // })
         }
       }
     },

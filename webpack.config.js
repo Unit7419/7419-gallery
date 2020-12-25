@@ -1,7 +1,8 @@
-const webpack = require('webpack');
-const path = require('path');
+const webpack = require('webpack')
+const path = require('path')
 
-const mode = process.env.NODE_ENV === 'development' ? 'development' : 'production'
+const mode =
+  process.env.NODE_ENV === 'development' ? 'development' : 'production'
 
 module.exports = {
   context: path.resolve(__dirname, '7419/src'),
@@ -17,7 +18,7 @@ module.exports = {
     contentBase: path.resolve(__dirname, '7419/src'),
     disableHostCheck: true,
     port: 7419,
-    host: "0.0.0.0"
+    host: '0.0.0.0',
   },
   module: {
     rules: [
@@ -31,6 +32,11 @@ module.exports = {
   resolve: {
     alias: {
       'react-photo-gallery': path.resolve(__dirname, 'src/Gallery'),
-    }
+    },
   },
-};
+  plugins: [
+    new webpack.DefinePlugin({
+      'process.env.NODE_ENV': JSON.stringify(mode),
+    }),
+  ],
+}
