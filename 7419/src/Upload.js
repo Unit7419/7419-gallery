@@ -43,8 +43,12 @@ export const Uploader = () => {
               message.success('Upload success!')
               setTimeout(() => location.reload(), 300) // 临时
             })
-            .catch(message.error)
-            .finally(() => setSpinning(false))
+            .catch(e => {
+              message.warn('失败')
+            })
+            .finally(() => {
+              setSpinning(false)
+            })
 
           // {
           //   base64,

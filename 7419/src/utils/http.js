@@ -20,7 +20,7 @@ export const post = (url, data, configs = {}) => {
     cache: 'no-cache',
     credentials: 'same-origin',
     method: 'POST',
-    mode: 'no-cors',
+    // mode: 'no-cors',
     ...options,
   })
 }
