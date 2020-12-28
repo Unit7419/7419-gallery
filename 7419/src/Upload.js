@@ -21,13 +21,13 @@ export const Uploader = () => {
         message.error(`${file.name} is not a png file`)
       }
 
-      const isLt5M = file.size / 1024 / 1024 < 5
+      const limitSize = file.size / 1024 / 1024 < 20
 
-      if (!isLt5M) {
-        message.error('Image must smaller than 5MB!')
+      if (!limitSize) {
+        message.error('Image must smaller than 20MB!')
       }
 
-      return file.type.startsWith('image/') && isLt5M
+      return file.type.startsWith('image/') && limitSize
     },
     onChange: info => {
       const file = info.file.originFileObj
@@ -38,7 +38,7 @@ export const Uploader = () => {
           form.append('file', file)
           form.append('name', `${Date.now()}-${file.name}`)
 
-          post(PUT_PHOTOS_API, form, {form: true})
+          post(PUT_PHOTOS_API, form, { form: true })
             .then(() => {
               message.success('Upload success!')
               setTimeout(() => location.reload(), 300) // 临时
