@@ -8,7 +8,7 @@ export const post = (url, data, configs = {}) => {
     // },
   }
 
-  if (!configs.form) {
+  if (data.constructor !== FormData) {
     options.headers = {
       'content-type': 'application/json',
     }

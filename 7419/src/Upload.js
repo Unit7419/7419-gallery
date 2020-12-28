@@ -44,7 +44,7 @@ export const Uploader = () => {
               setTimeout(() => location.reload(), 300) // 临时
             })
             .catch(e => {
-              message.warn('失败')
+              message.warn(`Upload failed! ${e}`)
             })
             .finally(() => {
               setSpinning(false)
