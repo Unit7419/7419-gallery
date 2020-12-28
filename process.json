@@ -3,7 +3,6 @@
     {
       "name": "Gallery",
       "script": "yarn start",
-      "watch": "./7419/src/app.js",
       "exec_mode": "cluster_mode",
       "log_date_format": "YYYY-MM-DD HH:mm Z"
     }
