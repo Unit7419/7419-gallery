@@ -6,10 +6,7 @@ export const post = (url, data, configs = {}) =>
     cache: 'no-cache',
     credentials: 'same-origin',
     headers: {
-      // 'content-type': configs.form
-      //   ? // ? 'multipart/form-data'
-      //     'application/x-www-form-urlencoded;charset=UTF-8'
-      //   : 'application/json',
+      'content-type': configs.form ? 'multipart/form-data' : 'application/json',
     },
     method: 'POST',
     mode: 'cors',
