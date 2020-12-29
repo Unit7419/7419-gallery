@@ -4,6 +4,16 @@
 
 You may be wondering what the content of this project is, then you should not have a login account and password.
 
+# Running scripts
+```bash
+# 本地API
+yarn dev
+# 远程API
+yarn local
+# Production
+yarn start
+```
+
 # TODO
 
 - [x] 按照上传时间排序
@@ -19,3 +29,8 @@ You may be wondering what the content of this project is, then you should not ha
   - [ ] 弹窗
   - [ ] Loading
 - [ ] UX 优化
+
+# Node
+
+- 日志打点
+- 并发

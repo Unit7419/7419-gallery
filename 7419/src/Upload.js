@@ -1,13 +1,7 @@
 import React, { useState } from 'react'
 import { Upload, Button, message, Spin } from 'antd'
 import { UploadOutlined } from '@ant-design/icons'
-import { PUT_PHOTOS_API, post } from './utils'
-
-function getBase64(img, callback) {
-  const reader = new FileReader()
-  reader.addEventListener('load', () => callback(reader.result))
-  reader.readAsDataURL(img)
-}
+import { uploadPhotoAPI } from './utils'
 
 export const Uploader = () => {
   const [spinning, setSpinning] = useState(false)
@@ -38,7 +32,7 @@ export const Uploader = () => {
           form.append('file', file)
           form.append('name', `${Date.now()}-${file.name}`)
 
-          post(PUT_PHOTOS_API, form, { form: true })
+          uploadPhotoAPI(PUT_PHOTOS_API, form, { form: true })
             .then(() => {
               message.success('Upload success!')
               setTimeout(() => location.reload(), 300) // 临时
@@ -49,15 +43,6 @@ export const Uploader = () => {
             .finally(() => {
               setSpinning(false)
             })
-
-          // {
-          //   base64,
-          //   name: `${Date.now()}-${file.name}`,
-          // }
-
-          // getBase64(file, base64 => {
-
-          // })
         }
       }
     },
