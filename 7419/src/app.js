@@ -21,21 +21,26 @@ class App extends React.Component {
   loadPhotos() {
     getPhotosAPI().then(data => {
       const photos = data.reduce((ps, imgPath) => {
+        const demensions = /&wh=(.*)\./g.exec(imgPath)
+        const [width, height] = !demensions
+          ? [800, 533]
+          : demensions[1].split('*').map(v => v * 1)
+
         const item = {
           src: `${STATIC_DOMAIN}/photos/${imgPath}`,
           key: imgPath,
           id: imgPath,
-          height_c: 533,
-          height_h: 1065,
-          height_l: 682,
-          height_m: 333,
-          height_o: 1065,
+          height_c: height,
+          height_h: height,
+          height_l: height,
+          height_m: height,
+          height_o: height,
           title: '7419',
-          width_c: 800,
-          width_h: 1600,
-          width_l: 1024,
-          width_m: 500,
-          width_o: 1600,
+          width_c: width,
+          width_h: width,
+          width_l: width,
+          width_m: width,
+          width_o: width,
         }
 
         return [
