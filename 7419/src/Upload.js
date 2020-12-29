@@ -32,7 +32,7 @@ export const Uploader = () => {
           form.append('file', file)
           form.append('name', `${Date.now()}-${file.name}`)
 
-          uploadPhotoAPI(PUT_PHOTOS_API, form, { form: true })
+          uploadPhotoAPI(form)
             .then(() => {
               message.success('Upload success!')
               setTimeout(() => location.reload(), 300) // 临时
