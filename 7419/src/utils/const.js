@@ -7,3 +7,5 @@ export const DOMAIN = testEnv
 // export const DOMAIN = '192.168.1.10:7001'
 
 export const STATIC_DOMAIN = 'http://47.100.219.10:15536'
+
+export const LOCAL_STORAGE_LOGIN_KEY = 'account_7419_gallery'

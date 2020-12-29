@@ -1,6 +1,6 @@
 import { request } from './request'
 
-export const post = (url, data, configs = {}) => {
+export const post = (url, data) => {
   const options = {
     body: data,
     // headers: {

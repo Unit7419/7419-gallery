@@ -7,18 +7,15 @@ import CustomComponentSelection from './CustomComponentSelection'
 import Sortable from './Sortable'
 import DynamicLoading from './DynamicLoading'
 import DynamicColumns from './DynamicColumns'
-import { getPhotosAPI, STATIC_DOMAIN } from './utils'
+import { getPhotosAPI, STATIC_DOMAIN, isLoginService } from './utils'
 import { Uploader } from './Upload'
+import { LoginForm } from './LoginForm'
 
 class App extends React.Component {
-  constructor() {
-    super()
-    this.state = { width: -1 }
-    this.loadPhotos = this.loadPhotos.bind(this)
-  }
+  state = {}
 
   componentDidMount() {
-    this.loadPhotos()
+    this.injectLoginState()
   }
 
   loadPhotos() {
@@ -67,9 +64,30 @@ class App extends React.Component {
     })
   }
 
+  injectLoginState = async () => {
+    const isLogin = await isLoginService()
+
+    this.setState({ isLogin })
+
+    if (isLogin) {
+      this.loadPhotos()
+    }
+  }
+
+  inject = () => {
+    location.reload()
+  }
+
   render() {
+    if (!this.state.hasOwnProperty('isLogin')) {
+      return null
+    }
+
+    if (!this.state.isLogin) {
+      return <LoginForm inject={this.inject} />
+    }
+
     if (this.state.photos) {
-      const width = this.state.width
       return (
         <div className="App">
           {/* <Basic title={'Basic Row Layout'} photos={this.state.photos.slice(0, 20)} />
