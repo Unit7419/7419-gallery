@@ -1,19 +1,24 @@
 import React, { useState } from 'react'
 import { Upload, Button, message, Spin } from 'antd'
 import { UploadOutlined } from '@ant-design/icons'
-import { uploadPhotoAPI } from './utils'
+import { uploadPhotoAPI, getUserInfo } from './utils'
+
 
 export const Uploader = () => {
   const [spinning, setSpinning] = useState(false)
+
 
   const props = {
     multiple: true,
     customRequest: ({ file }) => {
       if (file.size) {
         const form = new FormData()
+        const user = getUserInfo()
 
         form.append('file', file)
         form.append('name', `${Date.now()}-${file.name}`)
+        form.append('username', user.name)
+        form.append('password', user.password)
 
         return uploadPhotoAPI(form)
           .then(() => {

@@ -3,6 +3,7 @@ import { PUT_PHOTOS_API, GET_PHOTOS_API, SIGN_API } from './api'
 import { ls } from './ls'
 import { LOCAL_STORAGE_LOGIN_KEY } from './const'
 import { message } from 'antd'
+import { getUserInfo } from '.'
 
 export const concurrencyUploadService = async formList => {
   while (formList.length) {
@@ -20,7 +21,7 @@ export const concurrencyUploadService = async formList => {
 }
 
 export const isLoginService = async data => {
-  const local = data || ls.get(LOCAL_STORAGE_LOGIN_KEY)
+  const local = data || getUserInfo()
 
   if (local) {
     return (await post(SIGN_API, local)) || {}

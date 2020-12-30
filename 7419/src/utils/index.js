@@ -1,9 +1,14 @@
+import { ls } from './ls'
+import { LOCAL_STORAGE_LOGIN_KEY } from './const'
+
 export * from './request'
 export * from './api'
 export * from './const'
 export * from './http'
 export * from './work'
 export * from './ls'
+
+export const getUserInfo = () => ls.get(LOCAL_STORAGE_LOGIN_KEY) || {}
 
 export const debounce = (func, wait, immediate) => {
   let timeout
