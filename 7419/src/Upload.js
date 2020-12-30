@@ -7,7 +7,29 @@ export const Uploader = () => {
   const [spinning, setSpinning] = useState(false)
 
   const props = {
-    // multiple: true, 后续支持
+    multiple: true,
+    customRequest: ({ file }) => {
+      if (file.size) {
+        const form = new FormData()
+
+        form.append('file', file)
+        form.append('name', `${Date.now()}-${file.name}`)
+
+        return uploadPhotoAPI(form)
+          .then(() => {
+            message.success('Upload success!')
+            setTimeout(() => location.reload(), 300) // 临时
+          })
+          .catch(e => {
+            message.warn(`Upload failed! ${e}`)
+          })
+          .finally(() => {
+            setSpinning(false)
+          })
+      }
+
+      message.error('Invalid image file.')
+    },
     beforeUpload: file => {
       setSpinning(true)
 
@@ -22,29 +44,6 @@ export const Uploader = () => {
       }
 
       return file.type.startsWith('image/') && limitSize
-    },
-    onChange: info => {
-      const file = info.file.originFileObj
-
-      if (['done', 'error'].includes(info.file.status)) {
-        if (file.size) {
-          const form = new FormData()
-          form.append('file', file)
-          form.append('name', `${Date.now()}-${file.name}`)
-
-          uploadPhotoAPI(form)
-            .then(() => {
-              message.success('Upload success!')
-              setTimeout(() => location.reload(), 300) // 临时
-            })
-            .catch(e => {
-              message.warn(`Upload failed! ${e}`)
-            })
-            .finally(() => {
-              setSpinning(false)
-            })
-        }
-      }
     },
   }
   return (
