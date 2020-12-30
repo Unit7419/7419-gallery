@@ -10,6 +10,7 @@ import DynamicColumns from './DynamicColumns'
 import { getPhotosAPI, STATIC_DOMAIN, isLoginService } from './utils'
 import { Uploader } from './Upload'
 import { LoginForm } from './LoginForm'
+import { message } from 'antd'
 
 class App extends React.Component {
   state = {}
@@ -70,13 +71,18 @@ class App extends React.Component {
   }
 
   injectLoginState = async () => {
-    const isLogin = await isLoginService()
+    const response = (await isLoginService()) || {}
+    const isLogin = response.status
 
     this.setState({ isLogin })
 
     if (isLogin) {
+      message.success('Login successfully.')
       this.loadPhotos()
+      return
     }
+
+    message.info('Please log in.')
   }
 
   inject = () => {
