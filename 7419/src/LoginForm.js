@@ -41,6 +41,7 @@ export const LoginForm = props => {
           <Input
             prefix={<UserOutlined className="site-form-item-icon" />}
             placeholder="Username"
+            autoComplete="off"
           />
         </Form.Item>
         <Form.Item

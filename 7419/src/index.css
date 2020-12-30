@@ -1,18 +1,18 @@
 body {
   font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
-  font-size  : 14px;
-  color      : #333;
-  margin     : 0 auto;
-  padding    : 0;
+  font-size: 14px;
+  color: #333;
+  margin: 0 auto;
+  padding: 0;
 }
 
 .clearfix:after {
   visibility: hidden;
-  display   : block;
-  font-size : 0;
-  content   : " ";
-  clear     : both;
-  height    : 0;
+  display: block;
+  font-size: 0;
+  content: ' ';
+  clear: both;
+  height: 0;
 }
 
 .clearfix {
@@ -34,7 +34,7 @@ body {
 }
 
 a {
-  color          : #08c;
+  color: #08c;
   text-decoration: none;
 }
 
@@ -57,20 +57,20 @@ a:hover {
 h1,
 h2,
 h3 {
-  color      : #222;
+  color: #222;
   font-weight: 200;
-  margin     : 0 auto;
-  margin-top : 10px;
-  text-align : center;
+  margin: 0 auto;
+  margin-top: 10px;
+  text-align: center;
 }
 
 h1 {
-  font-size : 35px;
+  font-size: 35px;
   margin-top: 10px !important;
 }
 
 h2 {
-  margin     : 15px 0 5px 0;
+  margin: 15px 0 5px 0;
   font-weight: 400;
 }
 
@@ -92,10 +92,10 @@ p {
 }
 
 iframe {
-  margin    : 0 auto;
+  margin: 0 auto;
   margin-top: 10px;
-  display   : block;
-  width     : 85px;
+  display: block;
+  width: 85px;
 }
 
 .react-photo-gallery--gallery {
@@ -104,28 +104,28 @@ iframe {
 
 .App {
   padding-top: 28px;
-  margin     : 0;
+  margin: 0;
 }
 
 .loading-msg {
-  font-size  : 20px;
+  font-size: 20px;
   font-weight: 200;
-  color      : #666;
-  width      : 130px;
-  margin     : 0 auto;
-  text-align : center;
+  color: #666;
+  width: 130px;
+  margin: 0 auto;
+  text-align: center;
 }
 
 .loading-msg:after {
-  overflow         : hidden;
-  display          : inline-block;
-  vertical-align   : middle;
-  padding-bottom   : 10px;
+  overflow: hidden;
+  display: inline-block;
+  vertical-align: middle;
+  padding-bottom: 10px;
   -webkit-animation: ellipsis steps(4, end) 900ms infinite;
-  animation        : ellipsis steps(4, end) 900ms infinite;
-  content          : "\2026";
+  animation: ellipsis steps(4, end) 900ms infinite;
+  content: '\2026';
   /* ascii code for the ellipsis character */
-  width            : 0px;
+  width: 0px;
 }
 
 #react-images-container {
@@ -133,20 +133,20 @@ iframe {
 }
 
 .toggle-select {
-  background      : #06befa;
+  background: #06befa;
   background-image: linear-gradient(to bottom, #06befa, #2980b9);
-  border-radius   : 3px;
-  border          : 0;
-  font-family     : Arial;
-  color           : #ffffff;
-  padding         : 10px 20px 10px 20px;
-  text-decoration : none;
+  border-radius: 3px;
+  border: 0;
+  font-family: Arial;
+  color: #ffffff;
+  padding: 10px 20px 10px 20px;
+  text-decoration: none;
 }
 
 .toggle-select:hover {
-  background      : #06befa;
+  background: #06befa;
   background-image: linear-gradient(to bottom, #06befa, #3498db);
-  text-decoration : none;
+  text-decoration: none;
 }
 
 @keyframes ellipsis {
@@ -167,8 +167,8 @@ iframe {
 
 #msg-loading-more {
   text-decoration: none;
-  display        : block;
-  margin-top     : 10px;
+  display: block;
+  margin-top: 10px;
 }
 
 @media only screen and (min-width: 800px) {
@@ -188,6 +188,22 @@ iframe {
 
 .ant-spin {
   position: fixed !important;
-  top     : 30px !important;
-  right   : 30px !important;
+  top: 30px !important;
+  right: 30px !important;
+}
+
+/* input:-webkit-autofill {
+  box-shadow: 0 0 0px 1000px black inset;
+  background-color: black !important;
+  -webkit-box-shadow: 0 0 0px 1000px black inset;
+  color: white;
+} */
+
+input {
+  height: 0;
+  padding: 1.2em .5em !important;
+  background-clip: content-box;
+}
+input::first-line{
+  color: #fff
 }

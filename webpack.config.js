@@ -1,5 +1,7 @@
-const webpack = require('webpack')
 const path = require('path')
+const webpack = require('webpack')
+const SpeedMeasurePlugin = require('speed-measure-webpack-plugin')
+const BundleAnaylzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 
 const mode = ['development', 'localhost'].includes(process.env.NODE_ENV)
   ? 'development'
@@ -36,6 +38,7 @@ module.exports = {
     },
   },
   plugins: [
+    new BundleAnaylzerPlugin(),
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
     }),
