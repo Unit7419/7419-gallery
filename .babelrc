@@ -4,6 +4,7 @@
     [
       "@babel/preset-env",
       {
+        "modules": false,
         "useBuiltIns": "entry"
       }
     ],
@@ -21,7 +22,7 @@
     [
       "import",
       {
-        "libraryName": "antd",
+        "libraryName": "antd"
       }
     ]
   ]

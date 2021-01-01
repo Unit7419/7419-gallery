@@ -1,7 +1,7 @@
 const path = require('path')
 const webpack = require('webpack')
-const SpeedMeasurePlugin = require('speed-measure-webpack-plugin')
-const BundleAnaylzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
+const BundleAnaylzerPlugin = require('webpack-bundle-analyzer')
+  .BundleAnalyzerPlugin
 
 const mode = ['development', 'localhost'].includes(process.env.NODE_ENV)
   ? 'development'
@@ -31,6 +31,11 @@ module.exports = {
         loader: 'babel-loader',
       },
     ],
+  },
+  optimization: {
+    minimize: true,
+    usedExports: true,
+    sideEffects: true,
   },
   resolve: {
     alias: {
