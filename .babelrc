@@ -17,6 +17,12 @@
       {
         "regenerator": true
       }
+    ],
+    [
+      "import",
+      {
+        "libraryName": "antd",
+      }
     ]
   ]
 }

@@ -3,7 +3,7 @@ import Gallery from 'react-photo-gallery';
 import { debounce } from './utils';
 
 function DynamicLoading({ photos }) {
-  const [images, setImages] = useState(photos.slice(0, 20));
+  const [images, setImages] = useState(photos.slice(0, 12));
   const [pageNum, setPageNum] = useState(1);
   const [loadedAll, setLoadedAll] = useState(false);
   const TOTAL_PAGES = 100;
